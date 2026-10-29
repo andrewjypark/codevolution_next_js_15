@@ -1,33 +1,32 @@
 @import "tailwindcss";
 @import "ap-ds-storybook/build/all-combinations/css/variables.css";
 
-
+/* variables*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-
+  /* --background: var(--ap-tier-2-color-background-base);
+  --foreground: var(--ap-tier-2-color-content-default); */
   --section_padding_top_bottom: 50px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* --color-background: var(--background);
+  --color-foreground: var(--foreground); */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --background: #0a0a0a; */
+    /* --foreground: #ededed; */
   }
 }
 
 body {
-  background: var(--background);
+  background: var(--ap-tier-2-color-background-base);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  font: var(--ap-tier-2-typography-headline-default)
+  font: var(--ap-tier-2-typography-body-default)
 }
 
 
@@ -38,7 +37,6 @@ body {
   width: 100%;
   justify-content: center;
   align-items: stretch;
-  font: var(--ap-tier-2-typography-body-default);
 }
 
 
@@ -71,7 +69,6 @@ body {
 }
 
 /* For Tablet */
-
 @media screen and (max-width: 991px) {
   .ap_grid_1 {
     grid-template-columns: minmax(0px, 0.5fr) 1fr 1fr 1fr 1fr 1fr 1fr minmax(0px, 0.5fr);
@@ -80,7 +77,6 @@ body {
 }
 
 /* For Mobile */
-
 @media screen and (max-width: 767px) {
   .ap_grid_1 {
     grid-template-columns: minmax(0px, 0.5fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(0px, 0.5fr);
@@ -94,11 +90,38 @@ body {
    <div className="ap_grid_1"><div className="ap_header_container">...</div></div> */
 .ap_header_container {
   grid-column: 2 / 14;
-  background-color: gray;
+  background-color: var(--ap-tier-2-color-background-surface-secondary);
 }
 
 @media screen and (max-width: 992px) {
   .ap_header_container {
-    grid-column: 2 / 7;
+    grid-column: 2 / 8;
   }
+}
+
+.ap_header_text {
+    font: var(--ap-tier-2-typography-headline-default)
+}
+
+.ap_footer_section {
+  padding: var(--section_padding_top_bottom) 0px;
+}
+
+
+/* Grid-child class — nested inside an .ap_grid_1 container to get its
+   column placement, e.g.
+   <div className="ap_grid_1"><div className="ap_footer_container">...</div></div> */
+.ap_footer_container {
+  grid-column: 2 / 14;
+  background-color: var(--ap-tier-2-color-background-surface-secondary);
+}
+
+@media screen and (max-width: 992px) {
+  .ap_footer_container {
+    grid-column: 2 / 8;
+  }
+}
+
+.ap_footer_text {
+    font: var(--ap-tier-2-typography-title-default)
 }

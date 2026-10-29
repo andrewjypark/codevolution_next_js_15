@@ -31,12 +31,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="ap_grid_container ap_header_section">
           <div className="ap_grid_1">
             <div className="ap_header_container">
-              <p>Header</p>      
+              <p className="ap_header_text">Header</p>      
             </div>
           </div>
         </div>
         {children}
-        <p>Footer</p>
+
+        <div className="ap_grid_container ap_footer_section">
+          <div className="ap_grid_1">
+            <div className="ap_footer_container">
+              <p className="ap_footer_text">Footer</p>      
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );
