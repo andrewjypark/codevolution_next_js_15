@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  transpilePackages: ['ap-ds-storybook']
+
 };
 
 export default nextConfig;
