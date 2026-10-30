@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ViewportSync } from "ap-ds-storybook";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       data-theme="core"
-      data-viewport="desktop"
     >
       <body className="min-h-full flex flex-col">
+        <ViewportSync />
         <div className="ap_grid_container ap_header_section">
           <div className="ap_grid_1">
             <div className="ap_header_container">
