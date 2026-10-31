@@ -1,3 +1,4 @@
+/* Next.js 15 Tutorial - 20 - Active Links */
 @import "tailwindcss";
 @import "ap-ds-storybook/build/all-combinations/css/variables.css";
 
@@ -24,9 +25,31 @@
 
 body {
   background: var(--ap-tier-2-color-background-base);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  font: var(--ap-tier-2-typography-body-default)
+  color: var(--ap-tier-2-color-content-default);
+  font: var(--ap-tier-2-typography-body-default);
+}
+
+/* Default link styling for every <a> in the app.
+   Tailwind's Preflight (loaded via `@import "tailwindcss"` above) resets
+   anchors to `color: inherit; text-decoration: inherit;` inside its own
+   `base` cascade layer — that reset is why links were rendering unstyled.
+   This rule is a normal, un-layered rule, so per CSS cascade-layer rules
+   it automatically wins over anything living inside Tailwind's layers,
+   no matter where it sits in this file. A more specific selector/class
+   (like .ap_home_body_container_link_text below) can still override it
+   for a particular link if needed. */
+a {
+  color: var(--ap-color-color-palettes-blue-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--ap-color-color-palettes-blue-500);
+}
+
+a:active {
+  color: var(--ap-color-color-palettes-blue-700);
 }
 
 
@@ -129,6 +152,9 @@ body {
 .ap_product_details_container {
   grid-column: 2 / 14;
   /* background-color: var(--ap-tier-2-color-background-surface-secondary); */
+  display:flex;
+  flex-direction:column;
+  gap: 20px; 
 }
 
 @media screen and (max-width: 992px) {
@@ -150,9 +176,14 @@ body {
 @media screen and (max-width: 992px) {
   .ap_content_container {
     grid-column: 2 / 8;
-  }
+  } 
 }
 
+.ap_home_body_container {
+  display:flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
 .ap_home_body_container_header_text {
   font: var(--ap-tier-2-typography-title-default);
@@ -161,6 +192,17 @@ body {
 
 .ap_home_body_container_link_text {
   font: var(--ap-tier-2-typography-label-default);
-  color:var(--ap-color-color-palettes-blue-700);
-  text-decoration: underline; 
+}
+
+/* Used on the (auth) nav links to switch typography/color between the
+   active page's link and the rest. A CSS custom property name like
+   --ap-tier-2-typography-body-default-strong only does anything inside
+   var(...) on an actual property - it can't be dropped into className
+   directly, so these wrap each token in a real class instead. */
+.ap_auth_nav_link_active {
+  font: var(--ap-tier-2-typography-body-default-strong);
+}
+
+.ap_auth_nav_link_inactive {
+  color: var(--ap-color-color-palettes-blue-600);
 }
